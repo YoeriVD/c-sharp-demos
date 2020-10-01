@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-
 namespace generics.WithGenerics
 {
     public class MyAwesomeList<T>
     {
+        private int _count;
         private T[] _items;
-        private int _count = 0;
-        public int Size => _items.Length;
 
         public MyAwesomeList(int initialCapacity = 5)
         {
-            this._items = new T[5];
+            _items = new T[5];
         }
+
+        public int Size => _items.Length;
+
+        public T this[int i]
+        {
+            get => _items[i];
+            set => _items[i] = value;
+        }
+
         public void Add(T item)
         {
             if (_items.Length == _count)
@@ -24,11 +29,5 @@ namespace generics.WithGenerics
 
             _items[_count++] = item;
         }
-        public T this[int i]
-        {
-            get => this._items[i];
-            set => this._items[i] = value;
-        }
-
     }
 }

@@ -1,20 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using generics.GenericMethods;
 
 namespace generics.GenericInterfaces
 {
-    public class MyAwesomeSortedList<T> : IAwesomeList<T>
+    public class MyAwesomeSortedList<T> : IAwesomeList<T> where T : IComparable<T>
     {
+        private int _count;
         private T[] _items;
-        private int _count = 0;
-        public int Size => _items.Length;
 
         public MyAwesomeSortedList(int initialCapacity = 5)
         {
-            this._items = new T[5];
+            _items = new T[5];
         }
+
+        public int Size => _items.Length;
+
         public void Add(T item)
         {
             if (_items.Length == _count)
@@ -27,15 +28,22 @@ namespace generics.GenericInterfaces
             _items[_count++] = item;
             Array.Sort(_items);
         }
+
         public T this[int i]
         {
-            get => this._items[i];
-            set => this._items[i] = value;
+            get => _items[i];
+            set => _items[i] = value;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            return this.GetAwesomeEnumerator();
+            foreach (var item in _items)
+            {
+                if (item != null)
+                {
+                    yield return item;
+                }
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()

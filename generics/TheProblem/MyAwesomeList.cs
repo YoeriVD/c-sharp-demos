@@ -1,19 +1,23 @@
-using System.Collections;
-using System.Runtime.CompilerServices;
-
 namespace generics.TheProblem
 {
-    
     public class MyAwesomeList
     {
+        private int _count;
         private int[] _items;
-        private int _count = 0;
-        public int Size => _items.Length;
 
         public MyAwesomeList(int initialCapacity = 5)
         {
-            this._items = new int[5];
+            _items = new int[5];
         }
+
+        public int Size => _items.Length;
+
+        public int this[int i]
+        {
+            get => _items[i];
+            set => _items[i] = value;
+        }
+
         public void Add(int item)
         {
             if (_items.Length == _count)
@@ -24,12 +28,6 @@ namespace generics.TheProblem
             }
 
             _items[_count++] = item;
-        }
-
-        public int this[int i]
-        {
-            get => this._items[i];
-            set => this._items[i] = value;
         }
     }
 }

@@ -1,19 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-
 namespace generics.ObjectSolution
 {
     public class MyAwesomeList
     {
+        private int _count;
         private object[] _items;
-        private int _count = 0;
 
         public MyAwesomeList(int initialCapacity = 5)
         {
-            this._items = new object[5];
+            _items = new object[5];
         }
 
         public int Size => _items.Length;
+
+        public object this[int i]
+        {
+            get => _items[i];
+            set => _items[i] = value;
+        }
 
         public void Add(object item)
         {
@@ -25,12 +28,6 @@ namespace generics.ObjectSolution
             }
 
             _items[_count++] = item;
-        }
-
-        public object this[int i]
-        {
-            get => this._items[i];
-            set => this._items[i] = value;
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 
 namespace delegates_and_events.tests
@@ -8,7 +7,6 @@ namespace delegates_and_events.tests
         [Fact]
         public void Test1()
         {
-
         }
     }
 }

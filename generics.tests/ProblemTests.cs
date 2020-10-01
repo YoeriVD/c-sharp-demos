@@ -1,4 +1,3 @@
-using System;
 using generics.ObjectSolution;
 using Xunit;
 
@@ -14,9 +13,8 @@ namespace generics.tests
             list.Add(2);
             list.Add(3);
             list.Add(3);
-            
         }
-                
+
         [Fact]
         public void It_should_add_strings()
         {
@@ -24,7 +22,7 @@ namespace generics.tests
             list.Add("Info Support");
             list.Add("Yoeri");
         }
-        
+
         [Fact]
         public void It_should_not_add_different_types()
         {
@@ -32,7 +30,7 @@ namespace generics.tests
             list.Add(1);
             list.Add("my number");
         }
-        
+
         [Fact]
         public void It_should_return_the_object_so_i_can_do_stuff_with_it()
         {
@@ -45,8 +43,9 @@ namespace generics.tests
             var total = 0;
             for (var i = 0; i < list.Size; i++)
             {
-                total += (int)list[i];
+                total += (int) list[i];
             }
+
             Assert.Equal(9, total);
         }
     }

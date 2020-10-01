@@ -1,4 +1,3 @@
-using System;
 using Xunit;
 
 namespace collections_and_objectpool.tests
@@ -8,7 +7,6 @@ namespace collections_and_objectpool.tests
         [Fact]
         public void Test1()
         {
-
         }
     }
 }
