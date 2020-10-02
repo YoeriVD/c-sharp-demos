@@ -1,12 +1,13 @@
-﻿using System;
+using collections_and_objectpool.Warehouse;
 
 namespace collections_and_objectpool
 {
-    internal class Program
+    public class Program
     {
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // CollectionsProgram.Run(args);
+            ObjectPoolProgram.Run(args);
         }
     }
 }
