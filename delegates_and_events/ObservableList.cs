@@ -15,6 +15,12 @@ namespace delegates_and_events
         {
             _list = new List<T>();
         }
+
+        public Delegate[] GetEventListeners()
+        {
+            return ItemAdded?.GetInvocationList() ?? new Delegate[0];
+        }
+        
         public IEnumerator<T> GetEnumerator()
         {
             return _list.GetEnumerator();
@@ -28,7 +34,7 @@ namespace delegates_and_events
         public void Add(T item)
         {
             _list.Add(item);
-            ItemAdded?.Invoke(this, new EventArgs(item));
+            ItemAdded?.Invoke(this, new EventArgs());
         }
 
         public void Clear()

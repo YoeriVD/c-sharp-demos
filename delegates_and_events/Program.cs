@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace delegates_and_events
 {
     internal static partial class Program
     {
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
-            Delegates();
-            Events();
+            // Delegates();
+            await Events();
         }
 
 
