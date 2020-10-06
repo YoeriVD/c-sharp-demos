@@ -12,7 +12,7 @@ namespace threads_examples
     {
         private static void Main(string[] args)
         {
-            RunProcessExample();
+            //RunProcessExample();
 
 
             var numbers = Enumerable
@@ -22,8 +22,8 @@ namespace threads_examples
 
             // Helpers.Clock(nameof(Sync), () => Sync(numbers));
             // Helpers.Clock(nameof(UsingThreads), () => UsingThreads(numbers.Reverse().ToArray()));
-            // Helpers.Clock(nameof(UsingThreadPool), () => UsingThreadPool(numbers));
-            // Helpers.Clock(nameof(AsyncCall), () => AsyncCall(numbers));
+             //Helpers.Clock(nameof(UsingThreadPool), () => UsingThreadPool(numbers));
+            Helpers.Clock(nameof(AsyncCall), () => AsyncCall(numbers));
         }
 
         private static void RunProcessExample()
@@ -110,6 +110,7 @@ namespace threads_examples
             cd.Wait();
         }
 
+        // NOT SUPPORTED ON .NET CORE
         public static void AsyncCall(params uint[] numbers)
         {
             var caller = new AsyncMethodCaller(Helpers.Fibonacci); //delegate
