@@ -1,3 +1,4 @@
+using collections_and_objectpool.CollectionExamples;
 using collections_and_objectpool.Warehouse;
 
 namespace collections_and_objectpool
@@ -6,7 +7,7 @@ namespace collections_and_objectpool
     {
         public static void Main(string[] args)
         {
-            // CollectionsProgram.Run(args);
+            CollectionsProgram.Run(args);
             ObjectPoolProgram.Run(args);
         }
     }
