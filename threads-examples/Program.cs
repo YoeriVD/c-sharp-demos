@@ -35,6 +35,7 @@ namespace threads_examples
             {
                 Console.WriteLine("process: " + process1.ProcessName);
             }
+
             using var process = Process.Start("docker", "run hello-world");
             Console.WriteLine("number of threads in docker " + process.Threads.Count);
             process.WaitForExit();
@@ -71,6 +72,8 @@ namespace threads_examples
             cd.Wait();
         }
 
+        private static object _lock = new object();
+
         public static void UsingThreadPool(params uint[] numbers)
         {
             var threadIds = new ConcurrentBag<int>();
@@ -92,9 +95,13 @@ namespace threads_examples
                 {
                     var threadId = Thread.CurrentThread.ManagedThreadId;
                     var result = Helpers.Fibonacci(number);
-                    Console.WriteLine(
-                        $"{nameof(UsingThreadPool)} {threadId} (pool: {Thread.CurrentThread.IsThreadPoolThread}, reuse: {threadIds.Contains(threadId)}):  {number}! = {result}"
-                    );
+                    lock (_lock)
+                    {
+                        Console.WriteLine(
+                            $"{nameof(UsingThreadPool)} {threadId} (pool: {Thread.CurrentThread.IsThreadPoolThread}, reuse: {threadIds.Contains(threadId)}):  {number}! = {result}"
+                        );
+                    }
+
                     threadIds.Add(threadId);
                     cd.Signal();
                 });
@@ -102,16 +109,14 @@ namespace threads_examples
 
             cd.Wait();
         }
-        
+
         public static void AsyncCall(params uint[] numbers)
         {
             var caller = new AsyncMethodCaller(Helpers.Fibonacci); //delegate
             foreach (var number in numbers)
             {
-                caller.BeginInvoke(number, (result) =>
-                {
-                    Console.WriteLine($"{nameof(AsyncCall)}: {number}! = {result}");
-                }, null);
+                caller.BeginInvoke(number,
+                    (result) => { Console.WriteLine($"{nameof(AsyncCall)}: {number}! = {result}"); }, null);
             }
         }
     }
