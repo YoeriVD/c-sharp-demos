@@ -32,7 +32,7 @@ namespace WpfApp
             {
                 Thread.Sleep(100);
                 AddResult($"the result is {number}");
-            })
+            }
             ;
             StatusMsg.Text = "WORK DONE!";
         }
