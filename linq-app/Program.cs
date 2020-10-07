@@ -8,9 +8,9 @@ namespace linq_app
         static async Task Main(string[] args)
         {
             // await GenerateCarCsv();
-            // IntroToLinqAndDeferredExecution.Run();
+            IntroToLinqAndDeferredExecution.Run();
             // SyntaxExamples.Run();
-            AdvancedLinq.Run();
+            // AdvancedLinq.Run();
         }
 
 
