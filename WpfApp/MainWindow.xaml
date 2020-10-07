@@ -12,7 +12,7 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <Button Click="Button_Click">Start</Button>
+            <Button x:Name="StartButton" Click="Button_Click">Start</Button>
             <Button Click="Cancel_Click">Cancel</Button>
             <TextBlock x:Name="StatusMsg"></TextBlock>
         </StackPanel>

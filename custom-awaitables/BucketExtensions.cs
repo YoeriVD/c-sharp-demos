@@ -14,9 +14,9 @@ namespace custom_awaitables
                 bucket.BucketFull += (o, eventArgs) => tcs.SetResult(eventArgs.Content);
                 while (!tcs.Task.IsCompleted)
                 {
+                    Console.WriteLine("Filling bucket ...");
                     bucket.Fill(1);
-                    await Task.Delay(100);
-                    // await TimeSpan.FromSeconds(1);
+                    await TimeSpan.FromSeconds(1);
                 }
             });
             return tcs.Task;

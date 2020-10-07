@@ -13,17 +13,19 @@ namespace custom_awaitables
         //     bucket.BucketFull += (o, eventArgs) => bucketNotFull = false;
         //     while (bucketNotFull)
         //     {
+        //         Console.WriteLine("Filling bucket ...");
         //         bucket.Fill(1);
         //         Thread.Sleep(100);
         //     }
-        //     Console.WriteLine("Hello World!");
+        //     Console.WriteLine("Bucket full!");
+        //     
         // }
         
         static async Task Main(string[] args)
         {
             var bucket = new Bucket(20);
             await bucket.FillBucket();
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Bucket full!");
         }
     }
 }

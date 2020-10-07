@@ -19,11 +19,10 @@ namespace threads_examples
                 .Range(10, 34)
                 .Select(i => (uint) i)
                 .ToArray();
-
             // Helpers.Clock(nameof(Sync), () => Sync(numbers));
             // Helpers.Clock(nameof(UsingThreads), () => UsingThreads(numbers.Reverse().ToArray()));
-             //Helpers.Clock(nameof(UsingThreadPool), () => UsingThreadPool(numbers));
-            Helpers.Clock(nameof(AsyncCall), () => AsyncCall(numbers));
+            // Helpers.Clock(nameof(UsingThreadPool), () => UsingThreadPool(UInt32.MaxValue));
+            // Helpers.Clock(nameof(AsyncCall), () => AsyncCall(numbers));
         }
 
         private static void RunProcessExample()

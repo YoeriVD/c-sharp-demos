@@ -17,6 +17,7 @@ namespace multi_threading_tasks_locks
             foreach (var i in Enumerable.Range(0, 1000))
             {
                 tasks.Add(AddItem(list, i, sem));
+                // tasks.Add(Task.Run(() => AddItem(list, i, sem)));            }
             }
 
             await Task.WhenAll(tasks);
